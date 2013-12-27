@@ -5,6 +5,8 @@
 # Created:  2 April 2008
 # Author:   Brian D. Wendt
 #   http://principialabs.com/
+# Modified on: 26 December 2013
+# Modified by: Conner Brooks
 # Version:  0.3
 # License:  GPLv3
 #   http://www.fsf.org/licensing/

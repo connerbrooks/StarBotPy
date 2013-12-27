@@ -21,6 +21,9 @@
  * Version:  1.1
  * License:  GPLv3
  *   (http://www.fsf.org/licensing/)
+ * 
+ * Modified on: 26 Decemeber 2013
+ * Modified by: Conner Brooks (http://familab.org/, http://wearscript.com)
  *
  */
 
