@@ -46,7 +46,7 @@ def eye_y(value):
 
 def mouth(value):
     if(0 <= value <= 1.0):
-        scaledVal = scale(90, value, 145)
+        scaledVal = scale(73, value, 145)
         print(scaledVal)
         ser.write(chr(255))
         ser.write(chr(3))
