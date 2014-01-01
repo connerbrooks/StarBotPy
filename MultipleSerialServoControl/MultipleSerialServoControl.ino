@@ -28,7 +28,7 @@
  */
 
 // Import the Arduino Servo library
-#include &lt;Servo.h&gt; 
+#include <Servo.h> 
 
 // Create a Servo object for each servo
 Servo servo1;
@@ -55,6 +55,10 @@ int i;               // iterator
 int ledPin = 13;
 int pinState = LOW;
 
+// LED 2 on pin 8
+int ledPin2 = 8;
+int pinState2 = LOW;
+
 void setup() 
 { 
   // Attach each Servo object to a digital pin
@@ -76,19 +80,21 @@ void setup()
 void loop() 
 { 
   // Wait for serial input (min 3 bytes in buffer)
-  if (Serial.available() &gt; 2) {
+  if (Serial.available() > 2) {
     // Read the first byte
     startbyte = Serial.read();
     // If it's really the startbyte (255) ...
     if (startbyte == 255) {
       // ... then get the next two bytes
-      for (i=0;i&lt;2;i++) {
+      for (i=0;i<2;i++) {
         userInput[i] = Serial.read();
       }
       // First byte = servo to move?
       servo = userInput[0];
+      //Serial.print(servo);
       // Second byte = which position?
       pos = userInput[1];
+      //Serial.print(pos);
       // Packet error checking and recovery
       if (pos == 255) { servo = 255; }
 
@@ -102,6 +108,14 @@ void loop()
           break;
         case 3:
           servo3.write(pos);
+          break;
+        case 4:
+          if(pos == 1){
+              pinState2 == HIGH;
+          }else{
+             pinState2 = LOW; 
+          }
+          digitalWrite(ledPin2, pinState2);
           break;
    //   case 4:
    //     servo4.write(pos);

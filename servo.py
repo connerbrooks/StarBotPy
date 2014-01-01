@@ -61,6 +61,10 @@ def scale(low, val, high):
 
 #def scale(val, src, dst):
 #    return int(((val - src[0]) / (src[1]-src[0])) * (dst[1] - dst[0]) + dst[0])
+def led(pin, state):
+    ser.write(chr(255))
+    ser.write(chr(pin))
+    ser.write(chr(state))
 
 def move(servo, angle):
     '''Moves the specified servo to the supplied angle.
