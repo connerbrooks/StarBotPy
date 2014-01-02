@@ -29,7 +29,7 @@ void setup() {
 
 void loop() {
   
-  if(Serial.available() > 3){
+  if(Serial.available() > 5){
     startbyte = Serial.read();
     if(startbyte == 255) {
       // get next 2 bytes
