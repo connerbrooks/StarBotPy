@@ -57,7 +57,7 @@ int pinState = LOW;
 
 // LED 2 on pin 8
 int ledPin2 = 8;
-int pinState2 = LOW;
+int pinState2 = HIGH;
 
 void setup() 
 { 
@@ -72,6 +72,10 @@ void setup()
 
   // LED on Pin 13 for digital on/off demo
   pinMode(ledPin, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  
+  digitalWrite(ledPin2, pinState2);
+  
 
   // Open the serial connection, 9600 baud
   Serial.begin(9600);
@@ -99,6 +103,7 @@ void loop()
       if (pos == 255) { servo = 255; }
 
       // Assign new position to appropriate servo
+      Serial.print(servo);
       switch (servo) {
         case 1:
           servo1.write(pos);    // move servo1 to 'pos'
@@ -110,10 +115,12 @@ void loop()
           servo3.write(pos);
           break;
         case 4:
-          if(pos == 1){
-              pinState2 == HIGH;
-          }else{
-             pinState2 = LOW; 
+          if (pos == 1) {
+            if (pinState2 == LOW) { pinState2 = HIGH; }
+            else { pinState2 = LOW; }
+          }
+          if (pos == 0) {
+            pinState2 = LOW;
           }
           digitalWrite(ledPin2, pinState2);
           break;

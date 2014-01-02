@@ -25,7 +25,7 @@ import serial
 #     usbport = '/dev/ttyUSB0'
 #   MacOSX example
 #     usbport = '/dev/tty.usbserial-FTALLOK2'
-usbport = '/dev/ttyACM0'
+usbport = '/dev/ttyACM1'
 
 # Set up serial baud rate
 ser = serial.Serial(usbport, 9600, timeout=1)
@@ -65,6 +65,11 @@ def led(pin, state):
     ser.write(chr(255))
     ser.write(chr(pin))
     ser.write(chr(state))
+
+def ledControl(mode, color):
+    ser.write(chr(255))
+    ser.write(chr(mode))
+    ser.write(chr(color))
 
 def move(servo, angle):
     '''Moves the specified servo to the supplied angle.
